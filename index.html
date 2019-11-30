@@ -1,0 +1,134 @@
+<!--tweet me @infowetrust | www.infowetrust.com
+   __ _  __ ____  _    _   __ ___   _____ ___  _ __  ___ _____
+  / // |/ // __/,' \  ///7/ // _/  /_  _// o |/// /,' _//_  _/
+ / // || // _/ / o | | V V // _/    / / /  ,'/ U /_\ `.  / /  
+/_//_/|_//_/   |_,'  |_n_,'/___/   /_/ /_/`_\\_,'/___,' /_/   
+                                                              
+Copyright 2017, RJ Andrews, All rights reserved. 
+-->
+
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	    <link rel="shortcut icon" type="image/png" href="https://infowetrust.com/wp-content/uploads/2018/12/primaryCubeFavicon144.png"/>
+<meta name="pinterest" content="nopin"/>
+
+
+	
+	  <meta name="twitter:card" content="summary_large_image">
+	  <meta name="twitter:image:alt" content="Map of DataViz Firsts:">
+	  <meta name="twitter:site" content="@infowetrust">
+	  <meta name="twitter:creator" content="@infowetrust">
+	
+	  <meta property="og:title" content="Map of DataViz Firsts:">
+	  <meta property="og:description" content="An interactive timeline of the most iconic infographics.">
+	  <meta property="og:image" content="http://infowetrust.com/images/twittercard.png">
+	  <meta property="og:url" content="http://infowetrust.com/scroll/">
+	  <meta property="og:site_name" content="Info We Trust">
+
+	<title>History of Infographics</title>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://d3js.org/d3.v4.min.js"></script>
+	<script src="/mustache.js"></script>
+
+	<script src="https://www.w3schools.com/lib/w3.js"></script>
+
+	<link rel="stylesheet" href="/style.css">
+
+</head>
+
+<body onload="resizeContainer()" onresize="resizeContainer()">
+	<!--Overlay
+	Unique title side panel that appears onload -->
+
+<div id="master" class="container">
+
+	<div id="titleFog" class="fog"></div>
+	<div id="titleSide" class="titleL" style="text-align: center;" w3-include-html="/title.html"></div>
+
+	<div class="atlas">
+		<!--background base image-->
+		<img src="/images/base100.jpg" alt=""/>
+		<!--background graphics-->
+		<span id='graphics' class='static'></span>
+		<!--background text-->
+		<span id='scrollText' class='static'></span>
+		<!--Corner link opens Title side panel-->		
+		<a href="https://medium.com/info-we-trust/interacting-with-the-history-of-dataviz-2d1867f2bf9a" target="_blank"><span id='corner' class='cartoon'></span></a>
+		<!--Keystone figures-->
+		<span id='keystoneSeal' class='keystone'></span>
+		<span id='keystoneNightingale' class='keystone'></span>
+		<span id='keystonePlayfair' class='keystone'></span>
+		<span id='keystoneSnow' class='keystone'></span>
+		<span id='keystoneDubois' class='keystone'></span>
+
+		<!--Cartoons on scroll-->
+		<div id="spotlight" class="fogSpotlight"></div>
+		<div id="cartoons" w3-include-html="/cartoons.html"></div>
+		
+	</div>
+	
+	<!--Side Pages show detail-->
+	<div id="sidePanelsR">
+		<div id="sidePanelR" class="sideR">
+			<div class="redline"></div>
+			<div class="sideBtn">
+				<img class="priorBtn" href="javascript:void(0)" src="/images/priorBtn.png" alt=""/>
+				<img class="closeBtn" href="javascript:void(0)" src="/images/closeBtn.png" alt=""/>
+				<img class="nextBtn" href="javascript:void(0)" src="/images/nextBtn.png" alt=""/>
+			</div>
+			<div class="redline"></div>
+			<p id="sidePanelTagR" class="tagText" style="background-color: rgba(0,0,0,0);"></p>
+			<p id="sidePanelTextR" class="realText"></p>
+			<div class="redline"></div>
+			<p id="sidePanelShareR" class="shareText" style="background-color: rgba(0,0,0,0);"></p>
+			<div class="redline"></div>
+		</div>
+	</div>
+
+	<div id="sidePanelsL">
+		<div id="sidePanelL" class="sideL">
+			<div class="redline"></div>
+			<div class="sideBtn">
+				<img class="priorBtn" href="javascript:void(0)" src="/images/priorBtn.png" alt=""/>
+				<img class="closeBtn" href="javascript:void(0)" src="/images/closeBtn.png" alt=""/>
+				<img class="nextBtn" href="javascript:void(0)" src="/images/nextBtn.png" alt=""/>
+			</div>
+			<div class="redline"></div>
+			<p id="sidePanelTagL" class="tagText" style="background-color: rgba(0,0,0,0);"></p>
+			<p id="sidePanelTextL" class="realText"></p>
+			<div class="redline"></div>
+			<p id="sidePanelShareL" class="shareText" style="background-color: rgba(0,0,0,0);"></p>
+			<div class="redline"></div>
+		</div>
+	</div>
+</div>
+	
+	<script> w3.includeHTML();</script>
+	<script src="/viz.js"></script>
+
+	<script id="tagTemplate" type="text/template">
+		<em>{{workDate}}: {{tag}}</em>
+	</script>
+
+	<script id="textTemplate" type="text/template" style="background:rgba(0,0,0,0);">
+		<img class="filigree" src="/images/filigree.png" alt=""/>
+		<img class="original" src="{{original}}" alt=""/>
+		<img class="filigree" src="/images/filigree.png" alt=""/>
+		<hr style="height:0.5ex; visibility:hidden;" />
+		<b>{{work}}</b>, {{workDate}}<br><i>{{subtitle}}</i><br>
+		<hr style="height:0.5ex; visibility:hidden;" />
+		<b>{{name}}</b><br>{{life}}<br>
+		<br>
+		{{paragraph}} <a href="{{link}}" target="_blank" style="background:rgba(0,0,0,0);font-style:italic;">☞ Source</a><br>
+		<hr style="height:0.5ex; visibility:hidden;" />
+	</script>
+	
+	<script id="shareTemplate" type="text/template" style="background:rgba(0,0,0,0);">
+		<i>Share this work:</i><br>
+		http://infowetrust.com/scroll/#{{slug}}
+	</script>
+	
+</body>
