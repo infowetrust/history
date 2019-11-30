@@ -1,0 +1,765 @@
+/* tweet me @infowetrust | www.infowetrust.com
+   __ _  __ ____  _    _   __ ___   _____ ___  _ __  ___ _____
+  / // |/ // __/,' \  ///7/ // _/  /_  _// o |/// /,' _//_  _/
+ / // || // _/ / o | | V V // _/    / / /  ,'/ U /_\ `.  / /  
+/_//_/|_//_/   |_,'  |_n_,'/___/   /_/ /_/`_\\_,'/___,' /_/   
+                                                              
+Copyright 2017, RJ Andrews, All rights reserved. */
+
+.container {
+	position: relative;
+	background-color: black;
+	margin: 0;
+	padding: 0;
+	overflow-x: hidden;
+	overflow-y: hidden;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	background-color: black;
+	max-width: 100%;
+	overflow-x: hidden;
+	overflow-y: hidden;
+} 
+
+.atlas {
+position: relative;
+display: block;
+z-index: 1; /* Stay on bottom */
+margin: 0;
+padding: 0;
+overflow-x: hidden;
+overflow-y: hidden;
+}
+
+.atlas img {
+max-width: 100%;
+display: block;
+z-index: 1; 
+}
+
+.screen {
+position: absolute;
+background-color: black;
+width: 100%;
+height: 100%;
+margin: 0;
+z-index: 0;
+}
+
+/*Side Panels */
+	.titleL {
+	    background-size: block;
+	    background-color: cornsilk;
+	    width: 40%; /*starts open, moves to zero later*/
+	   	box-sizing: border-box;
+	    position: fixed; /* Stay in place */
+	    left: 0;
+	    top: 0;
+	    z-index: -1; /* Stay on top */
+	    overflow-x: hidden; /* Disable scroll */
+	    overflow-y: hidden;
+	    padding-top: 0.5%; 
+	    padding-bottom: 1%;
+	}
+
+	.sideL {
+	    background-size: block;
+	    background-color: rgba(255,248,220,0.9);
+	    /*width: 0;  0 width - change this when cartoon selected */
+	   	box-sizing: border-box;
+	    position: fixed; /* Stay in place */
+	    left: 0;
+	    top: 0;
+	    z-index: -1; /* Stay on top */
+	    overflow-x: hidden; /* Disable scroll */
+	    overflow-y: hidden;
+		padding-bottom: 0.5%;
+		padding-top: 0.5%;
+	  	margin: 0;
+	}
+
+	.sideR {
+	    background-size: block;
+	    background-color: rgba(255,248,220,0.9);
+	   	box-sizing: border-box;
+	    position: fixed; /* Stay in place */
+	    z-index: -1;
+	    top: 0;
+	    overflow-x: hidden; /* Disable scroll */
+	    overflow-y: hidden;
+		padding-bottom: 0.5%;
+		padding-top: 0.5%;
+	  	margin: 0;
+	}
+
+	.redline {
+		background:#cc3300;
+		height:0.25%;
+		margin:0%;
+	}
+	.redlineT {
+		background:#cc3300;
+		height:0.1%;
+		margin:0.15%;
+	}
+
+/* for the BEGIN and side panel RETURN buttons*/
+	.selectBtn {
+	    position: absolute;
+	    width: 50%;
+	    left: 25%;
+	    background-color:rgba(0,0,0,0);
+	    display: inline;
+	    cursor: pointer; /* Add a pointer on hover */
+	    transition: 0.5s;
+	}
+	
+	@keyframes langren
+	{
+	  0%{transform: scale( 1 );}
+	  50%{transform: scale( 1.5 );}
+	  0%{transform: scale( 1 );}
+	}
+
+	.selectBtn:hover {
+	    transform: scale(1.1, 1.1);
+	    transition: 0.5s;
+	}
+
+	.original {
+		position: relative;
+	    width: 98%;
+	    left: 1%;
+	    margin-top:1%;
+	    margin-bottom:1%;
+	    background-color:rgba(0,0,0,0);
+	    display: block;
+	}
+
+	.filigree {
+		position: relative;
+	    width: 66%;
+	    left: 17%;
+	    margin-top:0%;
+	    margin-bottom:0%;
+	    background-color:rgba(0,0,0,0);
+	    display: block;
+	}
+
+	.returnBtn {
+	    position: relative;
+	    width: 50%;
+	    left: 25%;
+	    background-color:rgba(0,0,0,0);
+	    display: block;
+	    margin: 1.5%;
+	    cursor: pointer; /* Add a pointer on hover */
+	}
+
+	.returnBtn:hover {
+	    transform: scale(1.1, 1.1);
+	}
+	.sideBtn {
+		margin-top: 2%;
+		margin-bottom: 2%;
+		height:3.3%;
+		background-color: rgba(0,0,0,0);
+	}
+	.closeBtn {
+	    position: relative;
+	    width: 26%;
+	    left: 0%;
+	    background-color:rgba(0,0,0,0);
+	    display: block;
+	    margin: 0%;
+	    float:left;
+	    cursor: pointer; /* Add a pointer on hover */
+	}
+
+	.closeBtn:hover {
+	    transform: scale(1.1, 1.1);
+	}
+
+	.priorBtn {
+	    position: relative;
+	    width: 37%;
+	    left: 0%;
+	    background-color:rgba(0,0,0,0);
+	    display: block;
+	    margin: 0%;
+	    float:left;
+	    cursor: pointer; /* Add a pointer on hover */
+	}
+
+	.priorBtn:hover {
+	    transform: scale(1.1, 1.1);
+	}
+
+	.nextBtn {
+	    position: relative;
+	    width: 37%;
+	    left: 0%;
+	    background-color:rgba(0,0,0,0);
+	    display: block;
+	    margin: 0%;
+	    float:left;
+	    cursor: pointer; /* Add a pointer on hover */
+	}
+
+	.nextBtn:hover {
+	    transform: scale(1.1, 1.1);
+	}
+
+	.realText{
+		position: relative;
+		margin-top: 1%;
+		margin-bottom: 2%;
+		margin-left: 5%;
+		margin-right: 5%;
+		background-color:rgba(0,0,0,0);
+		font-size:1.5vw;
+		font-family:"Palatino";
+		text-align: left;
+	}
+	
+	.realText b {background-color:rgba(0,0,0,0);font-weight:bold;}
+	.realText i {background-color:rgba(0,0,0,0);font-style:italic;}
+	.realText strong {background-color:rgba(0,0,0,0);font-weight: bold; font-style:italic;}
+	
+	a,a:link,a:visited {
+		background-color:rgba(0,0,0,0);
+		color:#D43000;
+		text-decoration: none;
+	}
+	
+	.tagText {
+		background-size: contain;
+		position: relative;
+		background-color:rgba(0,0,0,0);
+		margin-top: 1%;
+		margin-bottom: 1%;
+		margin-left: 5%;
+		margin-right: 5%;
+		font-size:1.5vw;
+		font-family:"Palatino";
+		text-align: center;
+	}
+
+	.tagText em {
+		background-color:rgba(0,0,0,0);
+		font-style:italic;
+	}
+	
+	.tagText link {
+		background-color:rgba(0,0,0,0);
+		font-style:italic;
+		color:#cc3300;
+		text-decoration: none;
+		cursor: pointer;
+	}
+	
+	.shareText {
+		background-size: contain;
+		position: relative;
+		background-color:rgba(0,0,0,0);
+		margin-top: 1.5%;
+		margin-bottom: 1.5%;
+		margin-left: 5%;
+		margin-right: 5%;
+		font-size:1.25vw;
+		font-family:"Palatino";
+		text-align: center;
+	}
+	
+	.shareText i {
+		font-style:italic;
+		background-color:rgba(0,0,0,0);
+	}
+
+/* overlay fogs*/
+	.fog {
+	    position: fixed; /* Sit on top of the page content */
+	    display: block; /* Hidden by default */
+	    width: 100%; /* Full width (cover the whole page) */ 
+	    height: 100%; /* Full height (cover the whole page) */
+	    top: 0; left: 0; right: 0; bottom: 0;
+	    background-color: rgba(0,0,0,0.8); /* Black background with opacity */
+	    z-index: -1; /* Specify a stack order in case you're using a different order for other elements */
+	    cursor: pointer; /* Add a pointer on hover */
+	}
+
+	.fogSpotlight {
+	    background-image: url(/adventures/scroll/images/spotlightMask.png);
+		background-size:contain;
+		background-repeat: no-repeat;
+		position: absolute; /* Sit on top of the page content */
+	    display: block; /* Hidden by default */
+	    background-color:transparent; /* Black background with opacity */
+	    z-index: -1; /* Specify a stack order in case you're using a different order for other elements */
+	    opacity: 0.6;
+	    width: 200%;
+	    max-width: 200%;
+	    top: 0%; left: -80%;
+	    transition: 0.2s;
+	    cursor: pointer;
+	}
+
+/*For  cartoons that scale on hover*/
+	.cartoon {
+	  background-size: contain;
+	  background-repeat: no-repeat;
+	  display: inline-block;
+	  position: absolute;
+	  background-color:transparent;
+	  z-index: 2;
+	  cursor: pointer;
+	  /*box-shadow: 0 0 0 10px rgba(0,0,0,.5);add inset after : to reverse*/
+	}
+
+	.cartoon:hover {
+	  transform: scale(1.15, 1.15);
+	}
+
+	.static {
+	  background-size: contain;
+	  position: absolute;
+	  background-color:transparent;
+	  z-index: 2;
+	}
+
+	#graphics {
+	  background-image: url(/adventures/scroll/images/graphicsScroll.png);
+		background-repeat: no-repeat;
+		top:0%;
+		left:0%;
+		width:100%;
+		height:66.67%;
+		min-height: 100%;
+		min-width: 66.67%;
+		padding:0px;
+	}
+
+	#scrollText {
+	  background-image: url(/adventures/scroll/images/scrollText.png);
+		background-repeat: no-repeat;
+		top:0%;
+		left:0%;
+		width:100%;
+		height:66.67%;
+		min-height: 100%;
+		min-width: 66.67%;
+		padding:0px;
+		opacity: 90%;
+	}
+
+	.keystone {
+	  background-size: contain;
+	  position: absolute;
+	  background-color:transparent;
+	  z-index: 4;
+	  background-repeat: no-repeat;
+	}
+
+	#keystoneSeal {
+    background-image:
+    url(/adventures/scroll/images/keystoneSeal.png);
+    top: 19.97%; left: 47.5%; width: 5.03%; height: 8.77%;transition: .3s;}
+
+    #keystoneSeal:hover {
+	    top: 18%;
+	    left:39.84%;
+	    width: 20.12%;
+	    height: 35.08%;
+	    transition: .3s;
+	}
+
+    #keystoneNightingale {
+    background-image:
+    url(/adventures/scroll/images/keystoneNightingale.png);
+    top: 8.13%; left: 34.91%; width: 5.44%; height: 16.84%}
+
+    #keystonePlayfair {
+    background-image:
+    url(/adventures/scroll/images/keystonePlayfair.png);
+    top: 17.14%; left: 38.95%; width: 10.82%; height: 10.42%}
+
+    #keystoneSnow {
+    background-image:
+    url(/adventures/scroll/images/keystoneSnow.png);
+    top: 17.52%; left: 50.44%; width: 7.7%; height: 14.76%}
+
+    #keystoneDubois {
+    background-image:
+    url(/adventures/scroll/images/keystoneDubois.png);
+    top: 7.72%; left: 57.89%; width: 6.5%; height: 17.04%}
+
+/*nice Fonts*/
+	.georgiaS {background-color:rgba(0,0,0,0);font-size:1vw;font-family:"Georgia";font-weight:bold;}
+	.palatinoS{background-color:rgba(0,0,0,0);font-size:1.2vw;font-family:"Palatino";}
+	.palatinoBI{background-color:rgba(0,0,0,0);font-size:1.2vw;font-family:"Palatino";font-weight:bold;font-style:italic;}
+	.garamondS{background-color:rgba(0,0,0,0);font-size:3vw;font-family:"Garamond";}
+	.garamondLink{background-color:rgba(0,0,0,0);color:#cc3300;font-size:3vw;font-family:"Garamond";text-decoration: none; transition: all 1s; display: inline-block;}
+	.garamondLink:hover{transform: scale(1.1, 1.1);}
+	.garamondL {background-color:rgba(0,0,0,0);font-size:3.7vw;font-family:"Garamond";}
+	.garamondXL {background-color:rgba(0,0,0,0);font-size:4.5vw;font-family:"Garamond";}
+
+/*Corner CLICK FOR MORE! */
+#corner {
+background-image: url(/adventures/scroll/images/about.png);
+background-repeat: no-repeat;
+top:92.07%;
+left:0.65%;
+width:4.65%;
+height:6.97%;
+padding:0px;
+cursor: pointer;
+}
+/*Source and position of each cartoon */
+#scheiner {
+background-image: url(/adventures/scroll/images/toons/scheiner.png);
+top: 7.58%; left: 16.57%;
+width: 3.8%; height: 5.69%}
+#adams {
+background-image: url(/adventures/scroll/images/toons/adams.png);
+top: 33.67%; left: 10.02%;
+width: 4.17%; height: 4.11%}
+#buache1 {
+background-image: url(/adventures/scroll/images/toons/buache1.png);
+top: 82.6%; left: 7.11%;
+width: 3.74%; height: 7.41%}
+#buache2 {
+background-image: url(/adventures/scroll/images/toons/buache2.png);
+top: 83.89%; left: 11.83%;
+width: 4.67%; height: 6.08%}
+#langren {
+background-image: url(/adventures/scroll/images/toons/langren.png);
+top: 11.42%; left: 9.83%;
+width: 6.13%; height: 2.66%;
+animation-name: langren;
+animation-duration: 3s;
+animation-delay: 3s;
+animation-iteration-count:5;
+}
+#speed {
+background-image: url(/adventures/scroll/images/toons/speed.png);
+top: 31.06%; left: 15.41%;
+width: 4.28%; height: 4.17%}
+#plot {
+background-image: url(/adventures/scroll/images/toons/plot.png);
+top: 36.81%; left: 15.37%;
+width: 2.47%; height: 4.86%}
+#ogilby {
+background-image: url(/adventures/scroll/images/toons/ogilby.png);
+top: 24.33%; left: 10%;
+width: 4.67%; height: 5.15%}
+#kircher {
+background-image: url(/adventures/scroll/images/toons/kircher.png);
+top: 18.06%; left: 17%;
+width: 3.33%; height: 3.19%}
+#huygens {
+background-image: url(/adventures/scroll/images/toons/huygens.png);
+top: 17.42%; left: 13.3%;
+width: 2.66%; height: 3.94%}
+#halley1 {
+background-image: url(/adventures/scroll/images/toons/halley1.png);
+top: 45.94%; left: 14.52%;
+width: 4.75%; height: 4.57%}
+#halley2 {
+background-image: url(/adventures/scroll/images/toons/halley2.png);
+top: 47.56%; left: 9.91%;
+width: 3.82%; height: 4.17%}
+#halley3 {
+background-image: url(/adventures/scroll/images/toons/halley3.png);
+top: 51.08%; left: 14.93%;
+width: 3.43%; height: 4.51%}
+#halley4 {
+background-image: url(/adventures/scroll/images/toons/halley4.png);
+top: 57.97%; left: 11.19%;
+width: 3.09%; height: 3.65%}
+#lancisi {
+background-image: url(/adventures/scroll/images/toons/lancisi.png);
+top: 65.94%; left: 8.3%;
+width: 5.98%; height: 6.89%}
+#dubourg {
+background-image: url(/adventures/scroll/images/toons/dubourg.png);
+top: 12.72%; left: 29.04%;
+width: 4.44%; height: 6.83%}
+#lambert {
+background-image: url(/adventures/scroll/images/toons/lambert.png);
+top: 18.58%; left: 24.09%;
+width: 3.55%; height: 3.47%}
+#priestley1 {
+background-image: url(/adventures/scroll/images/toons/priestley1.png);
+top: 25.94%; left: 28.91%;
+width: 4.01%; height: 4.63%}
+#franklin {
+background-image: url(/adventures/scroll/images/toons/franklin.png);
+top: 29%; left: 23.07%;
+width: 3.32%; height: 5.03%}
+#priestley2 {
+background-image: url(/adventures/scroll/images/toons/priestley2.png);
+top: 33%; left: 28.91%;
+width: 4.63%; height: 4.63%}
+#fourcroy {
+background-image: url(/adventures/scroll/images/toons/fourcroy.png);
+top: 47.56%; left: 29.87%;
+width: 2.82%; height: 4.28%}
+#crome {
+background-image: url(/adventures/scroll/images/toons/crome.png);
+top: 54.56%; left: 24.35%;
+width: 3.78%; height: 5.61%}
+#playfair1 {
+background-image: url(/adventures/scroll/images/toons/playfair1.png);
+top: 64.67%; left: 26.15%;
+width: 2.51%; height: 3.07%}
+#playfair2 {
+background-image: url(/adventures/scroll/images/toons/playfair2.png);
+top: 65.89%; left: 29.19%;
+width: 2.55%; height: 1.97%}
+#playfair3 {
+background-image: url(/adventures/scroll/images/toons/playfair3.png);
+top: 71.08%; left: 26.98%;
+width: 2.28%; height: 2.03%}
+#playfair4 {
+background-image: url(/adventures/scroll/images/toons/playfair4.png);
+top: 69.5%; left: 30%;
+width: 1.7%; height: 2.54%} 
+#seaman {
+background-image: url(/adventures/scroll/images/toons/seaman.png);
+top: 67.44%; left: 20.78%;
+width: 3.43%; height: 5.61%}
+#maclure {
+background-image: url(/adventures/scroll/images/toons/maclure.png);
+top: 75.14%; left: 22.72%;
+width: 4.71%; height: 5.79%}
+#humboldt1 {
+background-image: url(/adventures/scroll/images/toons/humboldt1.png);
+top: 82.08%; left: 28.28%;
+width: 2.66%; height: 2.66%}
+#smith {
+background-image: url(/adventures/scroll/images/toons/smith.png);
+top: 84.92%; left: 23.44%;
+width: 3.97%; height: 5.44%}
+#brandes {
+background-image: url(/adventures/scroll/images/toons/brandes.png);
+top: 88%; left: 28.28%;
+width: 3.74%; height: 4.69%}
+#maunder {
+background-image: url(/adventures/scroll/images/toons/maunder.png);
+top: 88.56%; left: 82.89%;
+width: 4.78%; height: 4.42%}
+#bowley {
+background-image: url(/adventures/scroll/images/toons/bowley.png);
+top: 85.58%; left: 87.59%;
+width: 3.24%; height: 2.44%}
+#dubois {
+background-image: url(/adventures/scroll/images/toons/dubois.png);
+top: 84.83%; left: 79.98%;
+width: 1.7%; height: 3.94%}
+#booth {
+background-image: url(/adventures/scroll/images/toons/booth.png);
+top: 75.67%; left: 79.78%;
+width: 4.21%; height: 5.67%}
+#sankey {
+background-image: url(/adventures/scroll/images/toons/sankey.png);
+top: 74.53%; left: 85.89%;
+width: 4.63%; height: 5.96%}
+#cheysson {
+background-image: url(/adventures/scroll/images/toons/cheysson.png);
+top: 68.61%; left: 86.56%;
+width: 3.28%; height: 5.09%}
+#marey2 {
+background-image: url(/adventures/scroll/images/toons/marey2.png);
+top: 63.33%; left: 79.69%;
+width: 3.63%; height: 3.07%}
+#ocagne {
+background-image: url(/adventures/scroll/images/toons/ocagne.png);
+top: 60.44%; left: 86.46%;
+width: 2.93%; height: 4.86%}
+#mulhall {
+background-image: url(/adventures/scroll/images/toons/mulhall.png);
+top: 54.53%; left: 85.37%;
+width: 5.98%; height: 1.64%}
+#marey1 {
+background-image: url(/adventures/scroll/images/toons/marey1.png);
+top: 51.64%; left: 79.87%;
+width: 4.28%; height: 3.47%}
+#venn2 {
+background-image: url(/adventures/scroll/images/toons/venn2.png);
+top: 46.97%; left: 86.67%;
+width: 3.24%; height: 3.82%}
+#venn1 {
+background-image: url(/adventures/scroll/images/toons/venn1.png);
+top: 44.11%; left: 82.48%;
+width: 3.32%; height: 3.3%}
+#perozzo {
+background-image: url(/adventures/scroll/images/toons/perozzo.png);
+top: 35.25%; left: 87.78%;
+width: 3.9%; height: 6.54%}
+#muybridge {
+background-image: url(/adventures/scroll/images/toons/muybridge.png);
+top: 26.67%; left: 82.8%;
+width: 9.18%; height: 3.3%}
+#bowditch {
+background-image: url(/adventures/scroll/images/toons/bowditch.png);
+top: 20%; left: 83.91%;
+width: 3.47%; height: 4.75%}
+#lexis {
+background-image: url(/adventures/scroll/images/toons/lexis.png);
+top: 16.64%; left: 89.56%;
+width: 2.47%; height: 3.01%}
+#galton3 {
+background-image: url(/adventures/scroll/images/toons/galton3.png);
+top: 11.75%; left: 83.8%;
+width: 4.05%; height: 4.28%}
+#galton2 {
+background-image: url(/adventures/scroll/images/toons/galton2.png);
+top: 48.22%; left: 67.76%;
+width: 4.32%; height: 4.51%}
+#gibbs {
+background-image: url(/adventures/scroll/images/toons/gibbs.png);
+top: 41.53%; left: 67.31%;
+width: 3.16%; height: 3.99%}
+#loua {
+background-image: url(/adventures/scroll/images/toons/loua.png);
+top: 44.17%; left: 73%;
+width: 2.78%; height: 4.51%}
+#mayr1 {
+background-image: url(/adventures/scroll/images/toons/mayr1.png);
+top: 79.97%; left: 66.91%;
+width: 3.4%; height: 5.09%}
+#mayr2 {
+background-image: url(/adventures/scroll/images/toons/mayr2.png);
+top: 81.69%; left: 71.19%;
+width: 3.55%; height: 4.57%}
+#mayr3 {
+background-image: url(/adventures/scroll/images/toons/mayr3.png);
+top: 86.25%; left: 65.87%;
+width: 3.47%; height: 5.27%}
+#mayr4 {
+background-image: url(/adventures/scroll/images/toons/mayr4.png);
+top: 87.61%; left: 70.7%;
+width: 3.43%; height: 4.63%}
+#mendeleev {
+background-image: url(/adventures/scroll/images/toons/mendeleev.png);
+top: 26.69%; left: 70.3%;
+width: 3.24%; height: 3.41%}
+#minard2 {
+background-image: url(/adventures/scroll/images/toons/minard2.png);
+top: 16.75%; left: 72.93%;
+width: 5.02%; height: 2.08%}
+#montigny {
+background-image: url(/adventures/scroll/images/toons/montigny.png);
+top: 34.67%; left: 69.89%;
+width: 3.36%; height: 4.51%}
+#vauthier {
+background-image: url(/adventures/scroll/images/toons/vauthier.png);
+top: 67.28%; left: 69.56%;
+width: 4.24%; height: 5.15%}
+#walker1 {
+background-image: url(/adventures/scroll/images/toons/walker1.png);
+top: 56.42%; left: 68.85%;
+width: 3.86%; height: 5.03%}
+#walker2 {
+background-image: url(/adventures/scroll/images/toons/walker2.png);
+top: 55.89%; left: 73.67%;
+width: 2.02%; height: 2.67%}
+#zeuner {
+background-image: url(/adventures/scroll/images/toons/zeuner.png);
+top: 20.56%; left: 67.15%;
+width: 3.51%; height: 3.24%}
+#balbi {
+background-image: url(/adventures/scroll/images/toons/balbi.png);
+top: 80.08%; left: 35.67%;
+width: 4.82%; height: 5.79%}
+#berghaus {
+background-image: url(/adventures/scroll/images/toons/berghaus.png);
+top: 43.42%; left: 51.87%;
+width: 3.78%; height: 4.67%}
+#darwin {
+background-image: url(/adventures/scroll/images/toons/darwin.png);
+top: 89.28%; left: 39.91%;
+width: 2.31%; height: 3.7%}
+#dupin {
+background-image: url(/adventures/scroll/images/toons/dupin.png);
+top: 35.25%; left: 37.39%;
+width: 4.98%; height: 7.52%}
+#fourier {
+background-image: url(/adventures/scroll/images/toons/fourier.png);
+top: 45.5%; left: 38.39%;
+width: 4.05%; height: 3.47%}
+#galton1 {
+background-image: url(/adventures/scroll/images/toons/galton1.png);
+top: 86.08%; left: 51.52%;
+width: 3.43%; height: 6.37%}
+#gardner {
+background-image: url(/adventures/scroll/images/toons/gardner.png);
+top: 61.36%; left: 38.04%;
+width: 6.17%; height: 5.9%}
+#gillespie {
+background-image: url(/adventures/scroll/images/toons/gillespie.png);
+top: 82.83%; left: 57.5%;
+width: 3.47%; height: 3.76%}
+#guerry {
+background-image: url(/adventures/scroll/images/toons/guerry.png);
+top: 75.81%; left: 42.13%;
+width: 4.05%; height: 6.08%}
+#haeckel {
+background-image: url(/adventures/scroll/images/toons/haeckel.png);
+top: 7.28%; left: 69.06%;
+width: 2.82%; height: 6.54%}
+#harness {
+background-image: url(/adventures/scroll/images/toons/harness.png);
+top: 86.58%; left: 36.22%;
+width: 2.31%; height: 5.03%}
+#humboldt2 {
+background-image: url(/adventures/scroll/images/toons/humboldt2.png);
+top: 37.39%; left: 44.59%;
+width: 4.71%; height: 2.89%}
+#lalanne {
+background-image: url(/adventures/scroll/images/toons/lalanne.png);
+top: 33.14%; left: 58.65%;
+width: 4.36%; height: 7.75%}
+#mccallum {
+background-image: url(/adventures/scroll/images/toons/mccallum.png);
+top: 71.42%; left: 57.31%;
+width: 3.9%; height: 6.89%}
+#minard1 {
+background-image: url(/adventures/scroll/images/toons/minard1.png);
+top: 52.06%; left: 58.24%;
+width: 4.2%; height: 5.81%}
+#montizon {
+background-image: url(/adventures/scroll/images/toons/montizon.png);
+top: 84.22%; left: 42.46%;
+width: 3.94%; height: 3.53%}
+#nightingale {
+background-image: url(/adventures/scroll/images/toons/nightingale.png);
+top: 77.14%; left: 51.3%;
+width: 3.43%; height: 6.02%}
+#prichard {
+background-image: url(/adventures/scroll/images/toons/prichard.png);
+top: 32.61%; left: 52.65%;
+width: 3.63%; height: 5.96%}
+#quetelet1 {
+background-image: url(/adventures/scroll/images/toons/quetelet1.png);
+top: 71.11%; left: 39.06%;
+width: 2.82%; height: 3.47%}
+#quetelet2 {
+background-image: url(/adventures/scroll/images/toons/quetelet2.png);
+top: 43.11%; left: 56.89%;
+width: 4.17%; height: 3.53%}
+#serjev {
+background-image: url(/adventures/scroll/images/toons/serjev.png);
+top: 58.14%; left: 50.81%;
+width: 4.94%; height: 2.89%}
+#snow {
+background-image: url(/adventures/scroll/images/toons/snow.png);
+top: 66.28%; left: 52.65%;
+width: 4.01%; height: 5.96%}
+#woodbridge {
+background-image: url(/adventures/scroll/images/toons/woodbridge.png);
+top: 51.61%; left: 43.37%;
+width: 4.78%; height: 7.47%}
