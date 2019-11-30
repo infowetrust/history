@@ -91,7 +91,7 @@ function openSideL() {
 var inputData;
 var cartoonMetadata;
 //loads data
-d3.csv("/adventures/scroll/originalWorks.csv", function(csv) {
+d3.csv("originalWorks.csv", function(csv) {
     console.log('csv from sideText', csv);
     inputData = [].concat(csv);
 });
