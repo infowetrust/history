@@ -292,7 +292,7 @@ z-index: 0;
 	}
 
 	.fogSpotlight {
-	    background-image: url(/adventures/scroll/images/spotlightMask.png);
+	    background-image: url(images/spotlightMask.png);
 		background-size:contain;
 		background-repeat: no-repeat;
 		position: absolute; /* Sit on top of the page content */
@@ -331,7 +331,7 @@ z-index: 0;
 	}
 
 	#graphics {
-	  background-image: url(/adventures/scroll/images/graphicsScroll.png);
+	  background-image: url(images/graphicsScroll.png);
 		background-repeat: no-repeat;
 		top:0%;
 		left:0%;
@@ -343,7 +343,7 @@ z-index: 0;
 	}
 
 	#scrollText {
-	  background-image: url(/adventures/scroll/images/scrollText.png);
+	  background-image: url(images/scrollText.png);
 		background-repeat: no-repeat;
 		top:0%;
 		left:0%;
@@ -365,7 +365,7 @@ z-index: 0;
 
 	#keystoneSeal {
     background-image:
-    url(/adventures/scroll/images/keystoneSeal.png);
+    url(images/keystoneSeal.png);
     top: 19.97%; left: 47.5%; width: 5.03%; height: 8.77%;transition: .3s;}
 
     #keystoneSeal:hover {
@@ -378,22 +378,22 @@ z-index: 0;
 
     #keystoneNightingale {
     background-image:
-    url(/adventures/scroll/images/keystoneNightingale.png);
+    url(images/keystoneNightingale.png);
     top: 8.13%; left: 34.91%; width: 5.44%; height: 16.84%}
 
     #keystonePlayfair {
     background-image:
-    url(/adventures/scroll/images/keystonePlayfair.png);
+    url(images/keystonePlayfair.png);
     top: 17.14%; left: 38.95%; width: 10.82%; height: 10.42%}
 
     #keystoneSnow {
     background-image:
-    url(/adventures/scroll/images/keystoneSnow.png);
+    url(images/keystoneSnow.png);
     top: 17.52%; left: 50.44%; width: 7.7%; height: 14.76%}
 
     #keystoneDubois {
     background-image:
-    url(/adventures/scroll/images/keystoneDubois.png);
+    url(images/keystoneDubois.png);
     top: 7.72%; left: 57.89%; width: 6.5%; height: 17.04%}
 
 /*nice Fonts*/
@@ -408,7 +408,7 @@ z-index: 0;
 
 /*Corner CLICK FOR MORE! */
 #corner {
-background-image: url(/adventures/scroll/images/about.png);
+background-image: url(images/about.png);
 background-repeat: no-repeat;
 top:92.07%;
 left:0.65%;
